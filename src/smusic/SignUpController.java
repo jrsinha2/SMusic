@@ -4,76 +4,71 @@
  * and open the template in the editor.
  */
 package smusic;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import utils.ConnectionUtil;
-
 /**
  *
  * @author Aditya Sinha
  */
-public class LoginController implements Initializable {
-    
-    
+
+
+public class SignUpController {
+
     @FXML
     private AnchorPane homepane;
-    @FXML
-    private Label lbl_close;
+
     @FXML
     private JFXTextField username;
+
+    @FXML
+    private JFXButton btnSignUp;
+
     @FXML
     private JFXButton btnSignIn;
+
     @FXML
     private JFXPasswordField password;
+
     @FXML
-    private Label lbl_errors;
+    private Label lbl_close;
+
+
+    @FXML
+    private JFXTextField email;
+    @FXML
+    private Label lbl_skip;
     Connection conn = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     @FXML
-    private JFXButton btnSignUp;
-    @FXML
-    private Label lbl_skip;
-    @FXML
-    private Label lbl_forgotpass;
-    public LoginController() {
+    private Label lbl_errors;
+    
+    public SignUpController() {
         conn = ConnectionUtil.conDB();
     }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
 
     @FXML
-    private void handleButtonAction(javafx.scene.input.MouseEvent event) {
+    void handleButtonAction(MouseEvent event) {
         if(event.getSource()==lbl_close)
             System.exit(0);
-        if(event.getSource()==btnSignIn) {
-            //login here
-            lbl_errors.setText("");
-            if(logIn().equals("Success")) {
+        if(event.getSource()==btnSignUp) {
+            //signup here
+            if(signUp().equals("SUCCESS")) {
                 System.out.println("Next Window");
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
@@ -86,18 +81,17 @@ public class LoginController implements Initializable {
                 } catch (IOException ex) {
                     System.err.println(ex.getMessage());
                 }
-                
-                
             }
+            
         }
-        if(event.getSource()==btnSignUp) {
+        if(event.getSource()==btnSignIn) {
             System.out.println("Next Window");
                 Node node = (Node) event.getSource();
                 Stage stage = (Stage) node.getScene().getWindow();
                 stage.close();
                 
                 try {
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("SignUp.fxml")));
+                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Login.fxml")));
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException ex) {
@@ -118,55 +112,49 @@ public class LoginController implements Initializable {
                     System.err.println(ex.getMessage());
                 }
         }
-        if(event.getSource()==lbl_forgotpass){
-            System.out.println("Next Window");
-            Node node = (Node) event.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.close();
-
-            try {
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("ForgotPassword.fxml")));
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                System.err.println(ex.getMessage());
-            }
-        }
     }
-    
-    
-    private String logIn() {
-        String enteredEmail = username.getText();
-        String enteredUsername = enteredEmail;
+    private String signUp() {
+        String enteredUsername = username.getText();
+        String enteredEmail = email.getText();
         String enteredPassword = password.getText();
         
-
         //query
-        String sql = "SELECT * FROM users WHERE (email = ? or username = ?) and password = ?";
-        try {
-            preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1,enteredEmail);
-            preparedStatement.setString(2,enteredUsername);
-            if(!(enteredEmail.equals("aditya.sinha99@gmail.com") || enteredUsername.equals("smusic99")))
-                enteredPassword = String.valueOf(enteredPassword.hashCode());
-            preparedStatement.setString(3,enteredPassword);
+        String findSql = "SELECT * FROM users WHERE username = ? or email = ?";
+        
+        try{
+            preparedStatement = conn.prepareStatement(findSql);
+            preparedStatement.setString(1,enteredUsername);
+            preparedStatement.setString(2,enteredEmail);
             resultSet = preparedStatement.executeQuery();
-            if(!resultSet.next()) {
-                lbl_errors.setTextFill(Color.TOMATO);
-                lbl_errors.setText("Invalid username/email address");
-                System.err.println("Enter correct username/email");
-                return "Error";
+            if(!resultSet.next())
+            {
+                String insertSql = "INSERT INTO users VALUES(?,?,?)";
+                try
+                {   PreparedStatement preparedStatement1;
+                    preparedStatement1 = conn.prepareStatement(insertSql);
+                    preparedStatement1.setString(1,enteredUsername);
+                    preparedStatement1.setString(2,enteredEmail);
+                    int hash = enteredPassword.hashCode();
+                    enteredPassword = String.valueOf(hash);
+                    preparedStatement1.setString(3,enteredPassword);
+                    preparedStatement1.executeUpdate();  
+                    return "SUCCESS";
+                }
+                catch(Exception ex)
+                {   System.err.println("query wrong" + ex.getMessage());
+                    return "Exception";
+                }
             }
             else
-            {   
-                //showDialog("Login Successful",null,"Successful");
-                System.out.println("Login Successful");
-                return "Success";
+            {
+                lbl_errors.setTextFill(Color.TOMATO);
+                lbl_errors.setText("Account already exists");
+                return "Error";
             }
-        } catch (SQLException ex) {
+        }
+        catch(Exception ex) {
             return "Exception";
         }
     }
-    
-    
+
 }
