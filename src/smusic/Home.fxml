@@ -1,11 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smusic.HomeController">
-    
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smusic.HomeController">
+   <children>
+      <AnchorPane fx:id="pn_menu" layoutY="-6.0" prefHeight="606.0" prefWidth="228.0" style="-fx-background-color: #ffcce9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="pn_genmenu" prefHeight="249.0" prefWidth="228.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="21.0" style="-fx-text-fill: #726970; -fx-background-radius: 10PX;" text="MENU" wrapText="true">
+                     <font>
+                        <Font name="Yu Gothic Medium" size="15.0" />
+                     </font>
+                     <effect>
+                        <SepiaTone />
+                     </effect>
+                  </Label>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="60.0" prefHeight="42.0" prefWidth="224.0" text="Discover">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="104.0" prefHeight="42.0" prefWidth="224.0" text="Artists">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="146.0" prefHeight="42.0" prefWidth="224.0" text="Albums">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="188.0" prefHeight="42.0" prefWidth="224.0" text="Songs">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pn_personal" layoutX="2.0" layoutY="249.0" prefHeight="249.0" prefWidth="228.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="249.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="21.0" style="-fx-text-fill: #726970; -fx-background-radius: 10PX;" text="PERSONAL" wrapText="true">
+                     <font>
+                        <Font name="Yu Gothic Medium" size="15.0" />
+                     </font>
+                     <effect>
+                        <SepiaTone />
+                     </effect>
+                  </Label>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="60.0" prefHeight="42.0" prefWidth="224.0" text="Playlists">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton alignment="BASELINE_LEFT" layoutX="14.0" layoutY="104.0" prefHeight="42.0" prefWidth="224.0" text="Favourites">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pn_body" layoutX="262.0" prefHeight="600.0" prefWidth="539.0" />
+      <AnchorPane fx:id="pn_player" layoutY="558.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #770029;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fx:id="btn_play" fitHeight="25.0" fitWidth="17.0" layoutX="54.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="18.875" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="18.0">
+               <image>
+                  <Image url="@../images/Play.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_pause" fitHeight="25.0" fitWidth="17.0" layoutX="55.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Pause.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="seek_back" fitHeight="14.0" fitWidth="23.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="21.32432460784912" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="21.0">
+               <image>
+                  <Image url="@../images/Previous.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="seek_fwd" fitHeight="14.0" fitWidth="23.0" layoutX="86.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="21.0">
+               <image>
+                  <Image url="@../images/Next.png" />
+               </image>
+            </ImageView>
+            <JFXProgressBar fx:id="seek_bar" layoutX="143.0" layoutY="26.0" prefHeight="3.0" prefWidth="515.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="26.0" />
+            <ImageView fx:id="repeat" fitHeight="14.0" fitWidth="23.0" layoutX="760.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="23.200000762939453" AnchorPane.topAnchor="21.0">
+               <image>
+                  <Image url="@../images/Repeat.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="repeat1" fitHeight="14.0" fitWidth="23.0" layoutX="769.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../images/Repeat%20One.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="seek_fwd1" fitHeight="14.0" fitWidth="23.0" layoutX="685.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="21.0">
+               <image>
+                  <Image url="@../images/Favorite.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="seek_fwd11" fitHeight="14.0" fitWidth="23.0" layoutX="721.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="59.61538505554199" AnchorPane.topAnchor="21.0">
+               <image>
+                  <Image url="@../images/Shuffle.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
