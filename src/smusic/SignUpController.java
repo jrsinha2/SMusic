@@ -126,7 +126,7 @@ public class SignUpController {
             preparedStatement.setString(1,enteredUsername);
             preparedStatement.setString(2,enteredEmail);
             resultSet = preparedStatement.executeQuery();
-            if(!resultSet.next())
+            if(!resultSet.next() && !enteredUsername.equals("") && !enteredEmail.equals("") && !enteredPassword.equals(""))
             {
                 String insertSql = "INSERT INTO users VALUES(?,?,?)";
                 try
