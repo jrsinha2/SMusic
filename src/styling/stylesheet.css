@@ -9,8 +9,10 @@ and open the template in the editor.
 */
 .parent{
     -fx-background-color: #ffcce9;
+    -fx-text-fill: #726970;   
+}
+.close{
     -fx-text-fill: #726970;
-    
 }
 .btn{
     -fx-background-color: #dd77b3;
