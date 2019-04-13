@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="homepane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@../styling/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smusic.LoginController">
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="450.0" prefWidth="359.0" styleClass="parent" stylesheets="@../styling/stylesheet.css">
+         <children>
+            <ImageView fitHeight="55.0" fitWidth="45.0" layoutX="158.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Play.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="142.0" layoutY="225.0" styleClass="parent" stylesheets="@../styling/stylesheet.css" text="SMusic" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Segoe UI Semilight" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="96.0" layoutY="271.0" styleClass="parent" stylesheets="@../styling/stylesheet.css" text="your very own music player">
+               <font>
+                  <Font name="Segoe UI Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXTextField fx:id="username" layoutX="404.0" layoutY="101.0" prefHeight="25.0" prefWidth="250.0" promptText="username or email" />
+      <JFXButton fx:id="btnSignIn" buttonType="RAISED" layoutX="602.0" layoutY="232.0" onMouseClicked="#handleButtonAction" styleClass="btn" stylesheets="@../styling/stylesheet.css" text="Sign In" />
+      <Label fx:id="btnForgotPass" layoutX="404.0" layoutY="236.0" text="Forgot Password?" />
+      <JFXButton fx:id="btnSignUp" buttonType="RAISED" layoutX="539.0" layoutY="232.0" styleClass="btn" stylesheets="@../styling/stylesheet.css" text="Sign Up" />
+      <JFXPasswordField fx:id="password" layoutX="404.0" layoutY="164.0" prefHeight="25.0" prefWidth="250.0" promptText="password" />
+      <Label fx:id="lbl_close" layoutX="678.0" layoutY="6.0" onMousePressed="#handleButtonAction" prefHeight="17.0" prefWidth="3.0" styleClass="close" stylesheets="@../styling/stylesheet.css" text="X">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_errors" layoutX="404.0" layoutY="195.0" prefHeight="17.0" prefWidth="250.0" textFill="#ee6132">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
