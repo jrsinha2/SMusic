@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 14, 2019, 7:07:36 PM
+    Author     : Aditya Sinha
+*/
+.pn_menu {
+    -fx-background-color: #ffcce9;
+    
+}
+.pn_body {
+    -fx-background-color: #fff2fb;
+}
+.pn_player {
+    -fx-background-color: #770029;
+}
+.label {
+    -fx-text-fill: #726970;
+    -fx-background-radius: 10PX;
+}
+.menu_bar {
+    -fx-background-color: #f285ab;
+}

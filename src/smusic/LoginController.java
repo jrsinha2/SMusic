@@ -59,6 +59,7 @@ public class LoginController implements Initializable {
     private Label lbl_forgotpass;
     public LoginController() {
         conn = ConnectionUtil.conDB();
+        
     }
     
     @Override
@@ -84,7 +85,8 @@ public class LoginController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
+                    System.out.println("Cannot load Home.fxml");
+                    ex.printStackTrace();
                 }
                 
                 
@@ -115,7 +117,8 @@ public class LoginController implements Initializable {
                     stage.setScene(scene);
                     stage.show();
                 } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
+                    System.out.println("Cannot load Home.fxml");
+                    ex.printStackTrace();
                 }
         }
         if(event.getSource()==lbl_forgotpass){
@@ -129,7 +132,8 @@ public class LoginController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                System.err.println(ex.getMessage());
+                System.out.println("Cannot load Home.fxml");
+                ex.printStackTrace();
             }
         }
     }
@@ -161,6 +165,7 @@ public class LoginController implements Initializable {
             {   
                 //showDialog("Login Successful",null,"Successful");
                 System.out.println("Login Successful");
+                UserSession.createUser(enteredUsername, null);
                 return "Success";
             }
         } catch (SQLException ex) {

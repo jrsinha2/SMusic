@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderpane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="smusic.HomeController">
+   <center>
+      <AnchorPane prefHeight="700.0" prefWidth="800.0" styleClass="pn_body" stylesheets="@../styling/homestyle.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="495.0" layoutY="265.0" text="Artists">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
